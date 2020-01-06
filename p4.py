@@ -8,24 +8,28 @@
 При желании вы можете скомбинировать этот способ с каким-нибудь из описанных ранее.
 '''
 
-#Для Python 3 код может выглядеть, например, так:
+# Для Python 3 код может выглядеть, например, так:
 from functools import wraps
+
 
 def call_count(func):
     count = 0
+
     @wraps(func)
     def wrapper(*args, **kwargs):
         nonlocal count
         count += 1
         func(*args, **kwargs)
         print(count)
+
     return wrapper
 
 
-#Использоваться это будет следующим образом:
+# Использоваться это будет следующим образом:
 @call_count
 def f():
     pass
+
 
 f()  # 1
 f()  # 2
